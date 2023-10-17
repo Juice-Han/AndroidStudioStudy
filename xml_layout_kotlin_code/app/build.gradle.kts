@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.xml_layout_kotlin_code"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.xml_layout_kotlin_code"
