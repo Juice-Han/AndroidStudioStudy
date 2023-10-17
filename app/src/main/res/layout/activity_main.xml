@@ -27,17 +27,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@tools:sample/avatars"
-            app:srcCompat="@drawable/ocean2" />
+            app:srcCompat="@drawable/image03" />
 
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@tools:sample/avatars"
             android:visibility="invisible"
-            app:srcCompat="@drawable/ocean3" />
+            app:srcCompat="@drawable/image01" />
     </FrameLayout>
 </LinearLayout>
 
