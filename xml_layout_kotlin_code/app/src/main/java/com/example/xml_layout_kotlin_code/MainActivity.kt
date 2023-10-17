@@ -1,5 +1,7 @@
 package com.example.xml_layout_kotlin_code
 
+import android.graphics.Color
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -10,45 +12,18 @@ import androidx.constraintlayout.widget.ConstraintSet
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        val myText = TextView(this)
-        myText.text = "안녕, 안드로이드 13"
-        myText.textSize = 24f
-        myText.id = R.id.myText
+        val myButton = findViewById<Button>(R.id.button2)
+        val myTextView = findViewById<TextView>(R.id.textView2)
 
-        val myLayout = ConstraintLayout(this)
-        setContentView(myLayout)
+        myTextView.text = "Welcome to android world!"
+        myTextView.textSize = 24f
+        myTextView.setTypeface(null, Typeface.BOLD)
 
-        val set = ConstraintSet()
-        set.constrainHeight(myText.id, ConstraintSet.WRAP_CONTENT)
-        set.constrainWidth(myText.id, ConstraintSet.WRAP_CONTENT)
-
-        set.connect(myText.id, ConstraintSet.START,
-            ConstraintSet.PARENT_ID, ConstraintSet.START,0)
-        set.connect(myText.id, ConstraintSet.END,
-            ConstraintSet.PARENT_ID, ConstraintSet.END,0)
-        set.connect(myText.id, ConstraintSet.TOP,
-            ConstraintSet.PARENT_ID, ConstraintSet.TOP,0)
-        set.connect(myText.id, ConstraintSet.BOTTOM,
-            ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM,0)
-        set.applyTo(myLayout)
-
-        val myButton = Button(this)
-        myButton.text = "Button"
+        myButton.setBackgroundColor(Color.BLUE)
+        myButton.text = "Press me"
         myButton.textSize = 20f
-        myButton.isAllCaps = false
-        myButton.id = R.id.myButton
-
-        myLayout.addView(myText)
-        myLayout.addView(myButton)
-        setContentView(myLayout)
-
-        set.constrainHeight(myButton.id, ConstraintSet.WRAP_CONTENT)
-        set.constrainWidth(myButton.id, ConstraintSet.WRAP_CONTENT)
-
-        set.connect(myButton.id, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START,0)
-        set.connect(myButton.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END,0)
-        set.connect(myButton.id, ConstraintSet.TOP, myText.id, ConstraintSet.BOTTOM,64)
-        set.applyTo(myLayout)
+        myButton.setTypeface(null,Typeface.ITALIC)
     }
 }
