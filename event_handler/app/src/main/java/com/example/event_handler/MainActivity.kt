@@ -12,9 +12,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.button.setOnClickListener{
-            val s: String = "안녕, 안드로이드 13!"
+            val s: String = getString(R.string.text_messege)
             var myTextView = findViewById<TextView>(R.id.textView)
-            myTextView.text = s
+            myTextView.text = String.format(s,14)
         }
     }
 }
