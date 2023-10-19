@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">event_handler_practice</string>
+    <string name="method3_messege">method3 > dp=%d, px=%d</string>
 </resources>
