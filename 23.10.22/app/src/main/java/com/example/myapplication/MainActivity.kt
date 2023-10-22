@@ -1,30 +1,37 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.widget.Toast
+import android.view.MotionEvent
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
-
+    private val sb = StringBuilder()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.myButton.setOnClickListener{
-            Toast.makeText(
-                applicationContext, "Button is pressed", Toast.LENGTH_SHORT)
-                .show()
-            binding.myTextView.text = "Button is pressed"
-        }
+        binding.myView.setOnTouchListener(object : View.OnTouchListener{
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                handleTouch(event)
+                return true
+            }
+        })
+    }
 
-        binding.myButton.setOnLongClickListener{
-            Toast.makeText(
-                applicationContext, "Long Button click", Toast.LENGTH_SHORT).show()
-            binding.myTextView.text = "Long Button click"
-            false
+    private fun handleTouch(m: MotionEvent?){
+        var x:Float? = m?.x
+        var y:Float? = m?.y
+
+        when (m?.action){
+            MotionEvent.ACTION_DOWN -> sb.append("손가락 누름 $x, $y\n")
+            MotionEvent.ACTION_MOVE -> sb.append("손가락 이동 $x, $y\n")
+            MotionEvent.ACTION_UP -> sb.append("손가락 뗌 $x, $y\n")
+            else -> sb.append("\n")
         }
+        binding.textView.text = sb.toString()
     }
 }
