@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 
@@ -13,13 +14,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.myButton.setOnClickListener{
-            binding.myTextView.text = "Button Clicked"
+            Toast.makeText(
+                applicationContext, "Button is pressed", Toast.LENGTH_SHORT)
+                .show()
+            binding.myTextView.text = "Button is pressed"
         }
 
         binding.myButton.setOnLongClickListener{
-            binding.myTextView.text = "Long Button Clicked"
-            true //람다식은 return을 생략한다.
-            //리턴값이 false일 때 마우스를 길게 눌렀다가 때면 Button Clicked로 돌아간다.
+            Toast.makeText(
+                applicationContext, "Long Button click", Toast.LENGTH_SHORT).show()
+            binding.myTextView.text = "Long Button click"
+            false
         }
     }
 }
